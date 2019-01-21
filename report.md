@@ -1,6 +1,6 @@
 CSCI 5210 Advanced Topics in Computer Graphics and Visualization
 
-**Report of Assignment -- Colorization**
+## Report of Assignment -- Colorization
 
 \1. Development Environment
 
@@ -48,7 +48,7 @@ v. Visualization (TensorBoard)
 
  
 
-**1. Development Environment**
+### 1. Development Environment
 
 a. Operating System: Windows 10 (my laptop)
 
@@ -68,7 +68,7 @@ ii. Python: Python 2.7.5
 
 iii. GPU: GeForce GTX TITAN X
 
-**2. Overall Structure**
+### 2. Overall Structure
 
 **2.a. Image Preprocessing**
 
@@ -98,8 +98,6 @@ iii. GPU: GeForce GTX TITAN X
 
 ​	Label gray images, in which maximum value < 1 and minimum value > -1, as not valid image. The "valid" label will be used later in filtering of dataset.
 
- 
-
 **2.b. Build Dataset**
 
 ​	In TensorFlow, a Dataset can be used to represent an input pipeline as a collection of elements (nested structures of tensors) and a "logical plan" of transformations that act on those elements.
@@ -117,8 +115,6 @@ iii. GPU: GeForce GTX TITAN X
 2.b.ii. Iterator
 
 ​	Create a One Shot Iterator for iteration of Estimator.
-
- 
 
 **2.c. Estimator**
 
@@ -162,9 +158,7 @@ Colorization network (Same as the paper)
 
 ​	Visualize the gloabl_step/sec and loss using graphs. Visualize the sample images (input gray images, truth images and predict images) during the training.
 
- 
-
-**3. Hyperparameters and Computation Times**
+### 3. Hyperparameters and Computation Times
 
 Comparison between Basic colorization model and Full colorization model (with global network)
 
@@ -186,13 +180,11 @@ Training Suggestions (Possible improvements):
 
  
 
-**4. Experimental Details**
+### 4. Experimental Details
 
 **Background**
 
 I chose Tensorflow as my framework because I get used to Windows system and only it has the Windows version. Moreover, I have tried to use Linux VM and found that it cannot work with GPU. It really took my much time to learn the Tensorflow, as I know nothing about this framework before. Plus, I had only a little knowledge of deep learning. But after a harsh learning procedure, I finally built a basic model of colorization.
-
- 
 
 **Two mistakes**
 
@@ -200,21 +192,15 @@ However, I made lots of mistakes during the implementation of the Colorization M
 
 One mistake is that the a*b* channels of LAB images are not normalized to range (0, 1). I wrote the normalization function for it but I did not check the correctness of this function. The other stupid mistake is that I used Sigmoid transfer layer for all the network layer and there should be only one Sigmoid transfer for last output network layer and other layers should all use ReLU transfer. Thanks to the tutor, who help me find out these two stupid mistakes, otherwise my assignment may fail.
 
- 
-
 **Two improvements**
 
 During the debugging period, I also made some improvements. First, I implemented the global features network and the fusion layer to combine global and local features. Second, I removed the gray images in the stage of image preprocessing. These two improvements greatly facilitated my model. After implementing them, my model had a much better performance and its loss decreased faster, lower loss value within less training time. 
-
- 
 
 **Training environment**
 
 I mainly trained the model on my own laptop. Because it is too late when I found that GPU of the CSE department is available for students to apply and use. After I applied GPU and got the approval, there are only two days left. Even more unfortunately, the GPU resource of department is very limited due to the fierce competition among students. I only managed to use it for a very short period. And the configuration and environment are very different. so I modified and created a version for Tensorflow 1.3 with python 2.7.
 
- 
-
-**5. Submit Files**
+### 5. Submit Files
 
 color.py (basic colorization model, with clear comments)
 
@@ -232,7 +218,7 @@ upsample_tf_1_3.py (TensorFlow 1.3 version)
 
  
 
-**6. Reference**
+### 6. Reference
 
 **Let there be Color!: Joint End-to-end Learning of Global and Local Image Priors for Automatic Image Colorization with Simultaneous Classification**
 
